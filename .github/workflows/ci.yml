@@ -1,0 +1,18 @@
+
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get project
+        uses: actions/checkout@v4
+
+      - name: Check project
+        run: echo "CI/CD работает успешно!"
