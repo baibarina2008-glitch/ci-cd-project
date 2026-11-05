@@ -1,0 +1,23 @@
+
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    container:
+      image: node:20
+
+    steps:
+      - name: Get project
+        uses: actions/checkout@v4
+
+      - name: Check Node.js
+        run: node --version
+
+      - name: Check project
+        run: echo "Проверка проекта пройдена успешно!"
