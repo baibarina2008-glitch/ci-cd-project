@@ -1,18 +1,45 @@
 
-name: Basic Workflow
+name: Advanced Pipeline
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Select environment'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+      build_number:
+        description: 'Build number'
+        required: true
+        type: string
+      debug_mode:
+        description: 'Enable debug mode'
+        required: true
+        type: boolean
 
 jobs:
-  greeting-job:
+  linux-build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Greeting
-        run: echo "Hello, GitHub Actions!"
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Print Information
+      - name: Show input parameters
         run: |
-          echo "My first workflow"
-          echo "GitHub Actions is working"
-          echo "Task completed successfully"
+          echo "Environment: ${{ inputs.environment }}"
+          echo "Build number: ${{ inputs.build_number }}"
+          echo "Debug mode: ${{ inputs.debug_mode }}"
+
+      - name: Count commits
+        run: git rev-list --count HEAD
+
+  windows-build:
+    runs-on: windows-latest
+    steps:
+      - name: Show Windows information
+        run: echo "Windows build started successfully"
