@@ -1,0 +1,18 @@
+
+name: Basic Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  greeting-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Greeting
+        run: echo "Hello, GitHub Actions!"
+
+      - name: Print Information
+        run: |
+          echo "My first workflow"
+          echo "GitHub Actions is working"
+          echo "Task completed successfully"
