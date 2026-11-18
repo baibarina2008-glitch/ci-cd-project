@@ -1,0 +1,9 @@
+
+{
+  "name": "ci-cd-project",
+  "version": "1.0.0",
+  "description": "CI/CD учебный проект",
+  "scripts": {
+    "test": "node --test"
+  }
+}
