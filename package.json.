@@ -2,7 +2,10 @@
 {
   "name": "ci-cd-project",
   "version": "1.0.0",
+  "description": "CI/CD учебный проект",
   "scripts": {
-    "test": "node --test"
+    "lint": "node --check index.js",
+    "test": "node --test",
+    "build": "mkdir -p dist && cp index.js dist/index.js"
   }
 }
